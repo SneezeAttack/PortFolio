@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'app-music',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MusicComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('audioPlayer') song: any;
+
+  songName: string[] = [];
+  fileType: string[] = [];
+
+  constructor(private fetchService: HttpService) { }
 
   ngOnInit(): void {
+    this.initAudioElements();
   }
+
+  initAudioElements() {
+    this.fetchService.getData().subscribe(data => { this.songName.push(data.name), this.fileType.push(data.ftype) });
+
+    console.log(this.songName);
+
+  }
+
 
 }

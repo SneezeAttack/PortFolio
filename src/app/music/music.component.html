@@ -1,1 +1,12 @@
-<p>music works!</p>
+<div *ngIf="songName">
+  <ul *ngFor="let song of songName; index as i">
+    <li>{{song}} as a {{fileType[0]}}</li>
+  </ul>
+</div>
+
+<!--
+
+<audio controls>
+  <source src="/assets/audio/test.wav" />
+</audio> -->
+<span #audioPlayer>Player</span>

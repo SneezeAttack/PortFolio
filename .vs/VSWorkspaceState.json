@@ -3,11 +3,10 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\about",
-    "\\src\\app\\footer",
-    "\\src\\app\\header",
-    "\\src\\app\\plugins"
+    "\\src\\app\\music",
+    "\\src\\app\\plugins",
+    "\\src\\assets"
   ],
-  "SelectedNode": "\\src\\app\\plugins\\plugins.component.ts",
+  "SelectedNode": "\\src\\app\\music\\music.component.ts",
   "PreviewInSolutionExplorer": false
 }

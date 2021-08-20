@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'app-plugins',
@@ -7,11 +8,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PluginsComponent implements OnInit {
 
-  vidUrl: string = '';
-  activeVid: any;
-  constructor() { }
+  @ViewChild('videoPlayer') vid: any;
+  video: boolean = true;
+  ftype: string = '';
+  videoSource: string = "/assets/video/test.mp4";
+  toggleVideo() {
+
+    const video: HTMLVideoElement = this.vid.elementRef;
+   
+    video.play();
+  }
+
+  resetVideo(src: string): void {
+    const video: HTMLVideoElement = this.vid.elementRef;
+
+    video.src = src;
+  }
+
+  constructor(private fetchService: HttpService  ) { }
 
   ngOnInit(): void {
+    this.setVideoBool();
+  }
+
+  setVideoBool(): void {
+    if (this.vid) this.video = true;
+    else this.video = false
   }
 
 }

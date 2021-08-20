@@ -1,1 +1,17 @@
-<p>plugins works!</p>
+<!--div *ngIf="selectedVideo">
+  <video width="320" height="240" controls>
+    <source src="test.mp4" type="video/mp4" />
+  </video>
+</!--div-->
+
+<h3>Since I do not have proper licensing yet I cannot share the plugins with you at current time. I will however show you how they work!</h3>
+
+
+<div class="video">
+  <video controls (click)="toggleVideo()" #videoPlayer>
+    <source src="{{vid.src}}" type="video/{{ftype}}" />
+    Browser not supported
+  </video>
+</div>
+
+
