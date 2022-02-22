@@ -9,13 +9,12 @@ import { Media } from './media';
 })
 export class HttpService {
 
-  url: string = "https://wtfamisupposedtodohere.000webhostapp.com/index.php";
+  url: string = "/assets/fetchData.php";
   constructor(private http: HttpClient) { }
 
-  getData(): Observable<Media> {
+  getData(): Observable<Media[]> {
 
-    return this.http.get<Media>("/assets/temp.json");
-
+    return this.http.get<Media[]>(this.url);
   }
 
  

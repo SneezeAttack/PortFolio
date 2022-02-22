@@ -1,5 +1,14 @@
+[
   {
     "name": "test",
-    "ftype": "wav"
+    "ftype": "wav",
+    "mtype": "audio"
+  },
+  {
+    "name": "vidTest",
+    "ftype": "mp4",
+    "mtype": "video"
   }
+  
 
+]

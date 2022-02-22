@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpService } from '../http.service';
+import { Media } from '../media';
 
 @Component({
   selector: 'app-music',
@@ -10,8 +11,9 @@ export class MusicComponent implements OnInit {
 
   @ViewChild('audioPlayer') song: any;
 
-  songName: string[] = [];
-  fileType: string[] = [];
+  songList: Media[] = [];
+  active?: Media;
+  path: string = '';
 
   constructor(private fetchService: HttpService) { }
 
@@ -20,10 +22,26 @@ export class MusicComponent implements OnInit {
   }
 
   initAudioElements() {
-    this.fetchService.getData().subscribe(data => { this.songName.push(data.name), this.fileType.push(data.ftype) });
 
-    console.log(this.songName);
+    //let tmpMedia: Media[] = [];
+    this.fetchService.getData().subscribe(data => this.songList = data.filter(this.checkElement));
 
+    //console.log("Got data " + this.songList[0].name);
+
+
+
+  }
+
+
+  selectSong(i: number): void {
+    this.active = this.songList[i];
+    this.path = "/assets/audio/" + this.active.name + '.' + this.active.ftype;
+    //console.log(this.songList);
+  }
+
+  checkElement(m: Media): boolean {
+
+    return m.mtype === "audio";
   }
 
 

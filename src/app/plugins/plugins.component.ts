@@ -1,5 +1,6 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
+import { Media } from '../media';
 
 @Component({
   selector: 'app-plugins',
@@ -8,32 +9,32 @@ import { HttpService } from '../http.service';
 })
 export class PluginsComponent implements OnInit {
 
-  @ViewChild('videoPlayer') vid: any;
-  video: boolean = true;
-  ftype: string = '';
-  videoSource: string = "/assets/video/test.mp4";
-  toggleVideo() {
 
-    const video: HTMLVideoElement = this.vid.elementRef;
-   
-    video.play();
-  }
+  video: boolean = false;
+  videos: Media[] = [];
+  active?: Media;
+  path: string = '';
 
-  resetVideo(src: string): void {
-    const video: HTMLVideoElement = this.vid.elementRef;
 
-    video.src = src;
-  }
 
-  constructor(private fetchService: HttpService  ) { }
+  constructor(private fetchService: HttpService) { }
 
   ngOnInit(): void {
-    this.setVideoBool();
+    this.getData();
   }
 
-  setVideoBool(): void {
-    if (this.vid) this.video = true;
-    else this.video = false
+  getData() {
+    this.fetchService.getData().subscribe(data => this.videos = data.filter(this.checkElement) );
+  }
+
+  selectVid(index: number): void {
+    this.active = this.videos[index];
+    this.path = "/assets/video/" + this.active.name + '.' + this.active.ftype;
+  }
+
+  checkElement(m: Media): boolean {
+ 
+    return m.mtype === "video";
   }
 
 }

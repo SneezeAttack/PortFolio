@@ -6,10 +6,14 @@
 
 <h3>Since I do not have proper licensing yet I cannot share the plugins with you at current time. I will however show you how they work!</h3>
 
+<ul class="videos">
+  <li *ngFor="let title of videos; index as i" (click)="selectVid(i);">{{title.name}}</li>
+</ul>
 
-<div class="video">
-  <video controls (click)="toggleVideo()" #videoPlayer>
-    <source src="{{vid.src}}" type="video/{{ftype}}" />
+
+<div *ngIf="active" class="video">
+  <video controls>
+    <source src="{{path}}" type="video/{{active.ftype}}" />
     Browser not supported
   </video>
 </div>
