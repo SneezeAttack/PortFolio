@@ -13,7 +13,7 @@ export class MusicComponent implements OnInit {
 
   songList: Media[] = [];
   active?: Media;
-  path: string = '';
+
 
   constructor(private fetchService: HttpService) { }
 
@@ -23,26 +23,29 @@ export class MusicComponent implements OnInit {
 
   initAudioElements() {
 
+    //let response: JSON;
     //let tmpMedia: Media[] = [];
-    this.fetchService.getData().subscribe(data => this.songList = data.filter(this.checkElement));
+    //this.fetchService.getData().subscribe(data => this.songList = data.filter(this.checkElement));
+    //this.fetchService.getData().subscribe(data => this.response = data);
+    this.fetchService.getData().subscribe(data => this.fill(data));
 
-    //console.log("Got data " + this.songList[0].name);
 
 
 
   }
-
 
   selectSong(i: number): void {
+
     this.active = this.songList[i];
-    this.path = "/assets/audio/" + this.active.name + '.' + this.active.ftype;
-    //console.log(this.songList);
-  }
-
-  checkElement(m: Media): boolean {
-
-    return m.mtype === "audio";
   }
 
 
+  fill(d: Media[]): void {
+
+    let i = 0;
+    for (i; i < d.length; i++) {
+      this.songList.push(d[i]);
+    }
+
+  }
 }

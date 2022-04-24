@@ -3,10 +3,12 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\about",
+    "\\src\\app\\music",
+    "\\src\\app\\plugins",
     "\\src\\assets",
-    "\\src\\environments"
+    "\\src\\assets\\audio",
+    "\\src\\assets\\video"
   ],
-  "SelectedNode": "\\src\\app\\app-routing.module.ts",
+  "SelectedNode": "\\src\\app\\http.service.ts",
   "PreviewInSolutionExplorer": false
 }

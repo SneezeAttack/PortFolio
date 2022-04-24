@@ -10,31 +10,14 @@ import { Media } from '../media';
 export class PluginsComponent implements OnInit {
 
 
-  video: boolean = false;
-  videos: Media[] = [];
-  active?: Media;
-  path: string = '';
-
-
-
   constructor(private fetchService: HttpService) { }
 
   ngOnInit(): void {
-    this.getData();
+    //this.getData();
   }
 
   getData() {
-    this.fetchService.getData().subscribe(data => this.videos = data.filter(this.checkElement) );
-  }
-
-  selectVid(index: number): void {
-    this.active = this.videos[index];
-    this.path = "/assets/video/" + this.active.name + '.' + this.active.ftype;
-  }
-
-  checkElement(m: Media): boolean {
- 
-    return m.mtype === "video";
+    //this.fetchService.getData().subscribe(data => this.videos = data.filter(this.checkElement) );
   }
 
 }

@@ -1,13 +1,14 @@
 
   <ul class="songs">
-    <li *ngFor="let song of songList; index as i" (click)="selectSong(i);">{{song.name}}</li>
+    <li *ngFor="let song of songList; index as i" (click)="selectSong(i);">Title: {{song.name}}   Artist: {{song.artist}}</li>
   </ul>
 
 
+<div *ngIf="active">
+  <audio controls>
+    <source src="assets/audio/{{active.id}}.wav" />
+    File loading failed
+  </audio>
 
-  <div *ngIf="active">
-    <audio controls>
-      <source src="{{path}}" />
-    </audio>
-
-  </div>
+</div>
+  

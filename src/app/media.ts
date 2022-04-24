@@ -1,5 +1,9 @@
 export interface Media {
+
+  id: number,
   name: string,
-  ftype: string,
-  mtype: string
+  artist: string,
+  genre: string,
+  work: string
+  
 }
