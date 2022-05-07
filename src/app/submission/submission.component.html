@@ -1,1 +1,36 @@
-<p>submission works!</p>
+<button type="button" id="song" (click)="setState(1);">Song</button>
+
+<button type="button" id="plugin" (click)="setState(2)">Plugin</button>
+
+<div *ngIf="song">
+
+  <form #userPost="ngForm" (ngSubmit)="sendData(userPost.value)">
+
+
+    <label for="title">Song title: </label>
+    <input ngModel type="text" placeholder="Song title..." name="songtitle" id="title" required />
+    <br /><br /><br />
+
+
+    <label  for="artist">Artist name: </label>
+    <input ngModel type="text" id="artist" name="artistname" placeholder="Artist name..." required />
+    <br /><br /><br />
+
+
+    <label for="genre">Song genre: </label>
+    <input ngModel type="text" tid="genre" name="songGenre" placeholder="Music genre" required />
+    <br /><br /><br />
+
+
+    <label for="myFile">Select file: </label><br />
+    <input  type="file" id="myFile" name="myFile" required (change)="setFile($event);"/><br /><br />
+
+    <input type="submit" value="Upload!" />
+
+  </form>
+</div>
+
+
+
+
+{{tmp}}

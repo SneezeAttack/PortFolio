@@ -9,7 +9,7 @@ import { Media } from '../media';
 })
 export class MusicComponent implements OnInit {
 
-  @ViewChild('audioPlayer') song: any;
+  //@ViewChild('audioPlayer') song: any;
 
   songList: Media[] = [];
   active?: Media;

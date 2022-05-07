@@ -1,7 +1,8 @@
 
-  <ul class="songs">
-    <li *ngFor="let song of songList; index as i" (click)="selectSong(i);">Title: {{song.name}}   Artist: {{song.artist}}</li>
-  </ul>
+<ul class="songs">
+  <li *ngFor="let song of songList; index as i" (click)="selectSong(i);">Title: {{song.name}}  </li>
+
+</ul><br /><br /><br /><br />
 
 
 <div *ngIf="active">

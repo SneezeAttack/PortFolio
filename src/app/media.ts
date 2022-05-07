@@ -4,6 +4,6 @@ export interface Media {
   name: string,
   artist: string,
   genre: string,
-  work: string
+  work: string//Create array when cmpatible wiith database
   
 }

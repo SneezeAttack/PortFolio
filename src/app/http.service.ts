@@ -9,16 +9,28 @@ import { Media } from './media';
 })
 export class HttpService {
 
-  url: string = "assets/tmp.json";
+  getURL: string = "http://localhost:80/portFolio/getSong.php";
+  postURL: string = "http://localhost:80/PortFolio/addSong.php";
  
   constructor(private http: HttpClient) { }
 
   getData(): Observable<Media[]> {
 
-    let tmp = this.http.get<Media[]>(this.url);//.pipe(catchError(this.handleError));
-
-    //tmp.subscribe(data => console.log("Service: " + data));
+    let tmp = this.http.get<Media[]>(this.getURL);
 
     return tmp;
   }
+
+  sendData(formData: FormData): Observable<String>{
+
+
+    return this.http.post<String>(this.postURL, formData);
+  }
+
+  sendTest(): Observable<JSON>{
+
+    let tmp = { name: "Erik", age: "32" }
+
+    return this.http.post<JSON>(this.postURL, tmp);
+}
 }
